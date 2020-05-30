@@ -1,0 +1,94 @@
+#spring.datasource.url=jdbc:mysql://localhost:3306/test
+#spring.datasource.username=xxxxxx
+#spring.datasource.password=xxxxxx
+#spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/root
+#    username: root
+#    password: 123456
+#    driver-class-name: com.mysql.jdbc.Driver
+server:
+  port: 9003
+  #client（客户端）向server（服务器）注册服务的配置
+  #instance.appname:指明注册中的名字
+  #service-url.defaultZone:配置注册中心地址
+eureka:
+  instance:
+    appname: user
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9000/eureka/
+spring:
+  datasource:
+    # 配置数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/user?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=true&serverTimezone=UTC
+      username: root
+      password: root
+    #    password: 123456
+      # 数据库用户名
+      # 配置初始化大小/最大/最小
+      initial-size: 10
+      max-active: 200
+      min-idle: 10
+      # 最大连接等待时间
+      max-wait: 60000
+      # 间隔过久进行一次检查，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      # 一个连接在池内最小的生存时间
+      min-evictable-idle-time-millis: 300000
+
+
+      # 打开 PSCache，并指定每个连接上的 PSCache 的大小，oracle 设为 true，mysql 设为 false，分库分表较多，推荐设置为 false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-wait: 100000
+        max-idle: 10
+        max-active: 100
+    timeout: 5000
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
+    #虚拟host 可以不设置,使用server默认host
+    virtual-host: /user
+
+
+#mybatis-plus配置控制台打印完整带参数SQL语句
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#pagehelper分页插件
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
+
+#mq:
+#  rabbit:
+#    address: 127.0.0.1
+#    virtualHost: /user
+#    username: admin
+#    password: admin
+#    exchange:
+#      name: mq.direct
+#    size: 2
+#  concurrent:
+#    consumers: 4
+#  prefetch:
+#    count: 100

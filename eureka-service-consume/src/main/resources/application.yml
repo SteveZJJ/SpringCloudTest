@@ -1,0 +1,12 @@
+server:
+  port: 9002
+  #client（客户端）向server（服务器）注册服务的配置
+  #instance.appname:指明注册中的名字
+  #service-url.defaultZone:配置注册中心地址
+eureka:
+  instance:
+    appname: demo_service_consume
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9000/eureka/
+

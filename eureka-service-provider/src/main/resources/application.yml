@@ -1,0 +1,16 @@
+server:
+  port: 9001
+  #client（客户端）向server（服务器）注册服务的配置
+  #instance.appname:指明注册中的名字
+  #service-url.defaultZone:配置注册中心地址
+eureka:
+  instance:
+    appname: demo_service_provider
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka
+#应用名字
+spring:
+  application:
+    name: demo01
+
